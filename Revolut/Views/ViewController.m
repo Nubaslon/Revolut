@@ -37,7 +37,7 @@
 - (void)priv_loadData {
     [[NetworkOperation sharedOperation] requestCurrencysStatsOnSuccess:^(id result) {
         NSLog(@"Result - %@", result);
-        [self priv_refreshInerfaceWithData:result];
+        [self priv_refreshInterfaceWithData:result];
         [NSTimer scheduledTimerWithTimeInterval:30 target:self selector:@selector(priv_loadData) userInfo:nil repeats:YES];
     } onFailure:^(NSError *error) {
         NSLog(@"Error - %@", error);
