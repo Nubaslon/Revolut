@@ -7,6 +7,9 @@
 //
 
 #import "AppDelegate.h"
+#import "NetworkOperation.h"
+
+@import AFNetworking;
 
 @interface AppDelegate ()
 
@@ -17,6 +20,14 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    [[AFNetworkActivityIndicatorManager sharedManager] setEnabled:YES];
+
+    [[NetworkOperation sharedOperation] requestCurrencysStatsOnSuccess:^(id result) {
+        NSLog(@"Result - %@", result);
+    } onFailure:^(NSError *error) {
+        NSLog(@"Error - %@", error);
+    }];
+    
     return YES;
 }
 
