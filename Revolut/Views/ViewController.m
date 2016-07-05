@@ -8,6 +8,8 @@
 
 #import "ViewController.h"
 
+#import "NetworkOperation.h"
+
 @interface ViewController ()
 
 @end
@@ -17,11 +19,30 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
+    
+    [self priv_loadData];
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+#pragma mark - Private methods
+
+- (void)priv_refreshInterfaceWithData:(NSDictionary *)dictionary {
+    
+}
+
+- (void)priv_loadData {
+    [[NetworkOperation sharedOperation] requestCurrencysStatsOnSuccess:^(id result) {
+        NSLog(@"Result - %@", result);
+        [self priv_refreshInerfaceWithData:result];
+        [NSTimer scheduledTimerWithTimeInterval:30 target:self selector:@selector(priv_loadData) userInfo:nil repeats:YES];
+    } onFailure:^(NSError *error) {
+        NSLog(@"Error - %@", error);
+        [NSTimer scheduledTimerWithTimeInterval:30 target:self selector:@selector(priv_loadData) userInfo:nil repeats:YES];
+    }];
 }
 
 @end
