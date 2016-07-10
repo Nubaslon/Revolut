@@ -38,10 +38,10 @@
                                 </state>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9yI-tE-Ogx" customClass="CycleScrollView">
-                                <rect key="frame" x="20" y="71" width="560" height="160"/>
+                                <rect key="frame" x="20" y="71" width="560" height="120"/>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="160" id="Xts-xt-7Vg"/>
+                                    <constraint firstAttribute="height" constant="120" id="Xts-xt-7Vg"/>
                                 </constraints>
                                 <connections>
                                     <outlet property="datasource" destination="BYZ-38-t0r" id="0b0-f2-4SM"/>
@@ -49,10 +49,10 @@
                                 </connections>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="u9P-SE-ArW" customClass="CycleScrollView">
-                                <rect key="frame" x="20" y="257" width="560" height="160"/>
+                                <rect key="frame" x="20" y="217" width="560" height="120"/>
                                 <color key="backgroundColor" red="0.92941176469999998" green="0.68627450980000004" blue="0.29411764709999999" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="160" id="KCn-jK-ERS"/>
+                                    <constraint firstAttribute="height" constant="120" id="KCn-jK-ERS"/>
                                 </constraints>
                                 <connections>
                                     <outlet property="datasource" destination="BYZ-38-t0r" id="Z4c-7u-DMO"/>
