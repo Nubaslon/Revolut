@@ -20,7 +20,7 @@
 
 @optional
 - (void)cycleBannerView:(CycleScrollView *)bannerView didScrollToIndex:(NSUInteger)index;
-- (void)cycleBannerView:(CycleScrollView *)bannerView didSelectedAtIndex:(NSUInteger)index;
+- (void)cycleBannerView:(CycleScrollView *)bannerView enteredValue:(NSString *)value;
 @end
 
 @interface CycleScrollView : UIView
@@ -29,6 +29,8 @@
 @property (weak, nonatomic) IBOutlet id<CycleScrollViewDataSource> datasource;
 @property (weak, nonatomic) IBOutlet id<CycleScrollViewDelegate> delegate;
 @property (assign, nonatomic) NSUInteger currentSelectedPage;
+
+@property (strong, nonatomic) NSMutableArray *datasourceViews;
 
 - (void)loadDataToViews;
 - (void)setCurrentPage:(NSInteger)currentPage animated:(BOOL)animated;

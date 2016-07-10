@@ -9,13 +9,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Revolut/Views/CycleScrollView.m"
-            timestampString = "489865448.196776"
+            filePath = "Revolut/Views/ViewController.m"
+            timestampString = "489868256.682819"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "165"
-            endingLineNumber = "165"
-            landmarkName = "-scrollViewDidScroll:"
+            startingLineNumber = "100"
+            endingLineNumber = "100"
+            landmarkName = "-cycleBannerView:enteredValue:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

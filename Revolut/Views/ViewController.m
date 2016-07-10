@@ -9,6 +9,7 @@
 #import "ViewController.h"
 
 #import "NetworkOperation.h"
+#import "CurrencyView.h"
 
 @interface ViewController ()
 
@@ -94,7 +95,10 @@
     }
 }
 
-- (void)cycleBannerView:(CycleScrollView *)bannerView didSelectedAtIndex:(NSUInteger)index {
-    NSLog(@"didSelectedAtIndex:%ld", (long)index);
+- (void)cycleBannerView:(CycleScrollView *)bannerView enteredValue:(NSString *)value {
+    NSLog(@"current value 2: %@", value);
+    CurrencyView *view = [bannerView.datasourceViews objectAtIndex:bannerView.currentSelectedPage];
+    view.valueTextField.text = [NSString stringWithFormat:@"-%@%@", view.valueTextField.text, value];
 }
+
 @end

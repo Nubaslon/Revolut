@@ -9,13 +9,12 @@
 #import "CycleScrollView.h"
 #import "CurrencyView.h"
 
-@interface CycleScrollView () <UIScrollViewDelegate>
+@interface CycleScrollView () <UIScrollViewDelegate, CurrencyViewDelegate>
 
 @property (strong, nonatomic) UIScrollView *scrollView;
 @property (strong, nonatomic) UIPageControl *pageControl;
 
 @property (strong, nonatomic) NSArray *datasourceCurrencies;
-@property (strong, nonatomic) NSMutableArray *datasourceViews;
 
 @end
 
@@ -76,6 +75,7 @@
     for (NSInteger i = 0; i < self.datasourceCurrencies.count; i++) {
         CGRect imgRect = CGRectMake(contentWidth * i, 0, contentWidth, contentHeight);
         CurrencyView *currencyView = [[CurrencyView alloc] initWithFrame:imgRect];
+        currencyView.delegate = self;
         switch (i) {
             case 1:
                 currencyView.currencyName.text = @"EUR";
@@ -180,6 +180,12 @@
     }
     
     _pageControl.currentPage = page;
+}
+
+- (void)сurrencyView:(CurrencyView *)currencyView enteredValue:(NSString *)value {
+    if ([self.delegate respondsToSelector:@selector(cycleBannerView:enteredValue:)]) {
+        [self.delegate cycleBannerView:self enteredValue:value];
+    }
 }
 
 @end
