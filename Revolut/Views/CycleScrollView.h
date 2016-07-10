@@ -13,6 +13,7 @@
 
 @required
 - (NSArray *)numberOfCurrencyView:(CycleScrollView *)bannerView;
+- (NSMutableArray *)currensiesStats:(CycleScrollView *)bannerView;
 @end
 
 @protocol CycleScrollViewDelegate <NSObject>
@@ -27,5 +28,9 @@
 // Delegate and Datasource
 @property (weak, nonatomic) IBOutlet id<CycleScrollViewDataSource> datasource;
 @property (weak, nonatomic) IBOutlet id<CycleScrollViewDelegate> delegate;
+@property (assign, nonatomic) NSUInteger currentSelectedPage;
+
+- (void)loadDataToViews;
+- (void)setCurrentPage:(NSInteger)currentPage animated:(BOOL)animated;
 
 @end

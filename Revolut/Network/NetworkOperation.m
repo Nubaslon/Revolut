@@ -50,7 +50,9 @@ static NSString* const BASE_URL = @"http://www.ecb.europa.eu/stats/eurofxref/";
     [self.manager GET:path parameters:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         if (success) {
             NSDictionary *responseDic = [NSDictionary dictionaryWithXMLParser:responseObject];
-            responseDic = [[responseDic objectForKey:@"Cube"] objectForKey:@"Cube"];
+            responseDic = [[[responseDic objectForKey:@"Cube"]
+                            objectForKey:@"Cube"]
+                           objectForKey:@"Cube"];
             success(responseDic);
         }
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
