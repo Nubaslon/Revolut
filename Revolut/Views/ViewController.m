@@ -35,14 +35,37 @@
 }
 
 - (void)priv_loadData {
+    __weak typeof(self) weakSelf = self;
     [[NetworkOperation sharedOperation] requestCurrencysStatsOnSuccess:^(id result) {
         NSLog(@"Result - %@", result);
-        [self priv_refreshInterfaceWithData:result];
-        [NSTimer scheduledTimerWithTimeInterval:30 target:self selector:@selector(priv_loadData) userInfo:nil repeats:YES];
+        [weakSelf priv_refreshInterfaceWithData:result];
+        [weakSelf priv_updateData];
     } onFailure:^(NSError *error) {
         NSLog(@"Error - %@", error);
-        [NSTimer scheduledTimerWithTimeInterval:30 target:self selector:@selector(priv_loadData) userInfo:nil repeats:YES];
+        [weakSelf priv_updateData];
     }];
 }
 
+- (void)priv_updateData {
+    [NSTimer scheduledTimerWithTimeInterval:30 target:self selector:@selector(priv_loadData) userInfo:nil repeats:YES];
+}
+
+#pragma mark - CycleScrollViewDataSource
+
+- (NSArray *)numberOfCurrencyView:(CycleScrollView *)bannerView {
+    
+    return @[@"1",
+             @"2",
+             @"3"];
+}
+
+#pragma mark - CycleScrollViewDelegate
+
+- (void)cycleBannerView:(CycleScrollView *)bannerView didScrollToIndex:(NSUInteger)index {
+    NSLog(@"didScrollToIndex:%ld", (long)index);
+}
+
+- (void)cycleBannerView:(CycleScrollView *)bannerView didSelectedAtIndex:(NSUInteger)index {
+    NSLog(@"didSelectedAtIndex:%ld", (long)index);
+}
 @end

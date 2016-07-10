@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5796B3C61D326F5A00FD9CCF /* CurrencyView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5796B3C41D326F5A00FD9CCF /* CurrencyView.m */; };
+		5796B3C71D326F5A00FD9CCF /* CurrencyView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5796B3C51D326F5A00FD9CCF /* CurrencyView.xib */; };
+		5796B3CB1D3271CD00FD9CCF /* CycleScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5796B3CA1D3271CD00FD9CCF /* CycleScrollView.m */; };
 		57A0BA001D2C42C6007904F0 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 57A0B9FF1D2C42C6007904F0 /* ViewController.m */; };
 		57A0BA061D2C438D007904F0 /* NetworkOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 57A0BA051D2C438D007904F0 /* NetworkOperation.m */; };
 		57C58A351D2C4F4600487FAE /* XMLDictionary.m in Sources */ = {isa = PBXBuildFile; fileRef = 57C58A341D2C4F4600487FAE /* XMLDictionary.m */; };
@@ -20,6 +23,11 @@
 
 /* Begin PBXFileReference section */
 		288B57121C6AD9F4B462FE59 /* Pods_Revolut.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Revolut.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		5796B3C31D326F5A00FD9CCF /* CurrencyView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CurrencyView.h; sourceTree = "<group>"; };
+		5796B3C41D326F5A00FD9CCF /* CurrencyView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CurrencyView.m; sourceTree = "<group>"; };
+		5796B3C51D326F5A00FD9CCF /* CurrencyView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CurrencyView.xib; sourceTree = "<group>"; };
+		5796B3C91D3271CD00FD9CCF /* CycleScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CycleScrollView.h; sourceTree = "<group>"; };
+		5796B3CA1D3271CD00FD9CCF /* CycleScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CycleScrollView.m; sourceTree = "<group>"; };
 		57A0B9FE1D2C42C6007904F0 /* ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		57A0B9FF1D2C42C6007904F0 /* ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		57A0BA041D2C438D007904F0 /* NetworkOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NetworkOperation.h; sourceTree = "<group>"; };
@@ -50,6 +58,25 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5796B3C01D326F1900FD9CCF /* CurrencyView */ = {
+			isa = PBXGroup;
+			children = (
+				5796B3C31D326F5A00FD9CCF /* CurrencyView.h */,
+				5796B3C41D326F5A00FD9CCF /* CurrencyView.m */,
+				5796B3C51D326F5A00FD9CCF /* CurrencyView.xib */,
+			);
+			name = CurrencyView;
+			sourceTree = "<group>";
+		};
+		5796B3C81D3271AD00FD9CCF /* ScrollView */ = {
+			isa = PBXGroup;
+			children = (
+				5796B3C91D3271CD00FD9CCF /* CycleScrollView.h */,
+				5796B3CA1D3271CD00FD9CCF /* CycleScrollView.m */,
+			);
+			name = ScrollView;
+			sourceTree = "<group>";
+		};
 		57A0B9FB1D2C425E007904F0 /* Application */ = {
 			isa = PBXGroup;
 			children = (
@@ -73,6 +100,8 @@
 		57A0B9FD1D2C42C6007904F0 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				5796B3C81D3271AD00FD9CCF /* ScrollView */,
+				5796B3C01D326F1900FD9CCF /* CurrencyView */,
 				57A0B9FE1D2C42C6007904F0 /* ViewController.h */,
 				57A0B9FF1D2C42C6007904F0 /* ViewController.m */,
 			);
@@ -208,6 +237,7 @@
 				57E4B7281D2C3DF600F87391 /* LaunchScreen.storyboard in Resources */,
 				57E4B7251D2C3DF600F87391 /* Assets.xcassets in Resources */,
 				57E4B7231D2C3DF600F87391 /* Main.storyboard in Resources */,
+				5796B3C71D326F5A00FD9CCF /* CurrencyView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -267,10 +297,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				57C58A351D2C4F4600487FAE /* XMLDictionary.m in Sources */,
+				5796B3CB1D3271CD00FD9CCF /* CycleScrollView.m in Sources */,
 				57A0BA061D2C438D007904F0 /* NetworkOperation.m in Sources */,
 				57E4B71D1D2C3DF600F87391 /* AppDelegate.m in Sources */,
 				57A0BA001D2C42C6007904F0 /* ViewController.m in Sources */,
 				57E4B71A1D2C3DF600F87391 /* main.m in Sources */,
+				5796B3C61D326F5A00FD9CCF /* CurrencyView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

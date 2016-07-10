@@ -7,9 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+@class CycleScrollView;
 
 @interface ViewController : UIViewController
 
+@property (weak, nonatomic) IBOutlet CycleScrollView *cycleViewTop;
+@property (weak, nonatomic) IBOutlet CycleScrollView *cycleViewBottom;
 
 @end
 
