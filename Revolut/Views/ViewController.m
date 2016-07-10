@@ -45,6 +45,7 @@
 }
 
 - (void)priv_refreshInterfaceWithData {
+    self.currencyStatsLabel.text = [NSString stringWithFormat:@"1 EUR = %.4f %@", [[[self.currenciesStats objectAtIndex:0] objectForKey:@"_rate"] floatValue], [[self.currenciesStats objectAtIndex:0] objectForKey:@"_currency"]];
     [self.cycleViewTop loadDataToViews];
     [self.cycleViewBottom loadDataToViews];
     [self.cycleViewBottom setCurrentPage:1 animated:NO];
@@ -55,8 +56,8 @@
     [[NetworkOperation sharedOperation] requestCurrencysStatsOnSuccess:^(id result) {
         NSLog(@"Result - %@", result);
         [weakSelf.currenciesStats removeAllObjects];
-        [weakSelf.currenciesStats addObject:[[result objectAtIndex:0] objectForKey:@"_rate"]];
-        [weakSelf.currenciesStats addObject:[[result objectAtIndex:5] objectForKey:@"_rate"]];
+        [weakSelf.currenciesStats addObject:[result objectAtIndex:0]];
+        [weakSelf.currenciesStats addObject:[result objectAtIndex:5]];
         [weakSelf priv_refreshInterfaceWithData];
         [weakSelf priv_updateData];
     } onFailure:^(NSError *error) {

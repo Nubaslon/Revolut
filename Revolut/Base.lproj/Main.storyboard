@@ -59,12 +59,12 @@
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="4qe-ZD-4K7"/>
                                 </connections>
                             </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1 eur = 1.1234 usd" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="q46-Pg-IFC">
-                                <rect key="frame" x="232" y="25" width="135" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1 EUR = 1.1234 USD" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="q46-Pg-IFC">
+                                <rect key="frame" x="229" y="25" width="142" height="21"/>
                                 <color key="backgroundColor" red="0.035294117649999998" green="0.37780806290000002" blue="0.71764705880000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="oXZ-4f-90Y"/>
-                                    <constraint firstAttribute="width" constant="135" id="uA0-kC-uoO"/>
+                                    <constraint firstAttribute="width" constant="142" id="uA0-kC-uoO"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
