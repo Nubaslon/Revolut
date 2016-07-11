@@ -92,13 +92,38 @@
         self.currencyStatsLabel.hidden = YES;
     } else {
         self.currencyStatsLabel.hidden = NO;
+        if (self.cycleViewTop.currentSelectedPage == 0 && self.cycleViewBottom.currentSelectedPage == 1) {
+            //EUR -> USD
+            self.currencyStatsLabel.text = [NSString stringWithFormat:@"1 EUR = %.4f %@", [[[self.currenciesStats objectAtIndex:0] objectForKey:@"_rate"] floatValue], [[self.currenciesStats objectAtIndex:0] objectForKey:@"_currency"]];
+        } else if (self.cycleViewTop.currentSelectedPage == 0 && self.cycleViewBottom.currentSelectedPage == 2) {
+            //EUR -> GPB
+            self.currencyStatsLabel.text = [NSString stringWithFormat:@"1 EUR = %.4f %@", [[[self.currenciesStats objectAtIndex:1] objectForKey:@"_rate"] floatValue], [[self.currenciesStats objectAtIndex:1] objectForKey:@"_currency"]];
+        } else if (self.cycleViewTop.currentSelectedPage == 1 && self.cycleViewBottom.currentSelectedPage == 0) {
+            //USD -> EUR
+            self.currencyStatsLabel.text = [NSString stringWithFormat:@"1 EUR = %.4f %@", [[[self.currenciesStats objectAtIndex:0] objectForKey:@"_rate"] floatValue], [[self.currenciesStats objectAtIndex:0] objectForKey:@"_currency"]];
+        } else if (self.cycleViewTop.currentSelectedPage == 2 && self.cycleViewBottom.currentSelectedPage == 0) {
+            //GPB -> EUR
+            self.currencyStatsLabel.text = [NSString stringWithFormat:@"1 EUR = %.4f %@", [[[self.currenciesStats objectAtIndex:1] objectForKey:@"_rate"] floatValue], [[self.currenciesStats objectAtIndex:1] objectForKey:@"_currency"]];
+        }
     }
 }
 
 - (void)cycleBannerView:(CycleScrollView *)bannerView enteredValue:(NSString *)value {
     NSLog(@"current value 2: %@", value);
-    CurrencyView *view = [bannerView.datasourceViews objectAtIndex:bannerView.currentSelectedPage];
-    view.valueTextField.text = [NSString stringWithFormat:@"-%@%@", view.valueTextField.text, value];
+    NSString *newStr = [value stringByReplacingOccurrencesOfString:@"-" withString:@""];
+    if (self.cycleViewTop.currentSelectedPage == 0 && self.cycleViewBottom.currentSelectedPage == 1) {
+        //EUR -> USD
+        self.cycleViewBottom.currentView.valueTextField.text = [NSString stringWithFormat:@"+%.2f", [newStr floatValue] / [[[self.currenciesStats objectAtIndex:0] objectForKey:@"_rate"] floatValue]];
+    } else if (self.cycleViewTop.currentSelectedPage == 0 && self.cycleViewBottom.currentSelectedPage == 2) {
+        //EUR -> GPB
+        self.cycleViewBottom.currentView.valueTextField.text = [NSString stringWithFormat:@"+%.2f", [newStr floatValue] * [[[self.currenciesStats objectAtIndex:1] objectForKey:@"_rate"] floatValue]];
+    } else if (self.cycleViewTop.currentSelectedPage == 1 && self.cycleViewBottom.currentSelectedPage == 0) {
+        //USD -> EUR
+        self.cycleViewBottom.currentView.valueTextField.text = [NSString stringWithFormat:@"+%.2f", [newStr floatValue] * [[[self.currenciesStats objectAtIndex:0] objectForKey:@"_rate"] floatValue]];
+    } else if (self.cycleViewTop.currentSelectedPage == 2 && self.cycleViewBottom.currentSelectedPage == 0) {
+        //GPB -> EUR
+        self.cycleViewBottom.currentView.valueTextField.text = [NSString stringWithFormat:@"+%.2f", [newStr floatValue] / [[[self.currenciesStats objectAtIndex:1] objectForKey:@"_rate"] floatValue]];
+    }
 }
 
 @end

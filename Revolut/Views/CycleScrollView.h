@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 @class CycleScrollView;
+#import "CurrencyView.h"
 
 @protocol CycleScrollViewDataSource <NSObject>
 
@@ -31,6 +32,7 @@
 @property (assign, nonatomic) NSUInteger currentSelectedPage;
 
 @property (strong, nonatomic) NSMutableArray *datasourceViews;
+@property (strong, nonatomic) CurrencyView *currentView;
 
 - (void)loadDataToViews;
 - (void)setCurrentPage:(NSInteger)currentPage animated:(BOOL)animated;

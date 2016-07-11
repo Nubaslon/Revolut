@@ -7,7 +7,6 @@
 //
 
 #import "CycleScrollView.h"
-#import "CurrencyView.h"
 
 @interface CycleScrollView () <UIScrollViewDelegate, CurrencyViewDelegate>
 
@@ -100,7 +99,7 @@
 }
 
 - (void)loadDataToViews {
-    for (NSInteger i = 0; i < self.datasourceViews.count; i++) {
+    for (NSInteger i = 0; i < self.datasourceCurrencies.count; i++) {
         CurrencyView *currencyView = [self.datasourceViews objectAtIndex:i];
         NSDecimalNumber *currency = [self.datasourceCurrencies objectAtIndex:i];
         currencyView.currencySum.text = [NSString stringWithFormat:@"You have %.2f", currency.floatValue];
@@ -178,7 +177,8 @@
             [self.delegate cycleBannerView:self didScrollToIndex:page];
         }
     }
-    
+    self.currentView = [self.datasourceViews objectAtIndex:page+1];
+
     _pageControl.currentPage = page;
 }
 
