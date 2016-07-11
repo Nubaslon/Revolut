@@ -99,6 +99,12 @@
 }
 
 - (void)loadDataToViews {
+    self.datasourceCurrencies = [_datasource numberOfCurrencyView:self];
+    
+    NSMutableArray *cycleDatasource = [self.datasourceCurrencies mutableCopy];
+    [cycleDatasource insertObject:[self.datasourceCurrencies lastObject] atIndex:0];
+    [cycleDatasource addObject:[self.datasourceCurrencies firstObject]];
+    self.datasourceCurrencies = [cycleDatasource copy];
     for (NSInteger i = 0; i < self.datasourceCurrencies.count; i++) {
         CurrencyView *currencyView = [self.datasourceViews objectAtIndex:i];
         NSDecimalNumber *currency = [self.datasourceCurrencies objectAtIndex:i];

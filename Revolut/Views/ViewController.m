@@ -17,6 +17,7 @@
 @property(nonatomic, retain) NSDecimalNumber *countEUR;
 @property(nonatomic, retain) NSDecimalNumber *countUSD;
 @property (strong, nonatomic) NSMutableArray *currenciesStats;
+@property (weak, nonatomic) IBOutlet UIButton *exchangeButton;
 
 @end
 
@@ -27,6 +28,7 @@
     // Do any additional setup after loading the view, typically from a nib.
     
     self.currenciesStats = [NSMutableArray new];
+    [self.exchangeButton addTarget:self action:@selector(priv_exchange) forControlEvents:UIControlEventTouchUpInside];
     
     [self priv_loadData];
     [self priv_initCurrencies];
@@ -71,6 +73,54 @@
     [NSTimer scheduledTimerWithTimeInterval:30 target:self selector:@selector(priv_loadData) userInfo:nil repeats:YES];
 }
 
+- (void)priv_exchange {
+    float currencyValue = [[self.cycleViewTop.currentView.valueTextField.text stringByReplacingOccurrencesOfString:@"-" withString:@""] floatValue];
+    if (self.cycleViewTop.currentSelectedPage == 0 && self.cycleViewBottom.currentSelectedPage == 1) {
+        //EUR -> USD
+        if (currencyValue < [self.countEUR floatValue]) {
+            self.countEUR = [[NSDecimalNumber alloc] initWithFloat:(self.countEUR.floatValue - currencyValue)];
+            self.countUSD = [[NSDecimalNumber alloc] initWithFloat:(self.countUSD.floatValue + [self.cycleViewBottom.currentView.valueTextField.text floatValue])];
+        } else {
+            [self priv_showAlertView:@"Insufficient funds in the EUR"];
+        }
+    } else if (self.cycleViewTop.currentSelectedPage == 0 && self.cycleViewBottom.currentSelectedPage == 2) {
+        //EUR -> GPB
+        if (currencyValue < [self.countEUR floatValue]) {
+            self.countEUR = [[NSDecimalNumber alloc] initWithFloat:(self.countEUR.floatValue - currencyValue)];
+            self.countGPB = [[NSDecimalNumber alloc] initWithFloat:(self.countGPB.floatValue + [self.cycleViewBottom.currentView.valueTextField.text floatValue])];
+        } else {
+            [self priv_showAlertView:@"Insufficient funds in the EUR"];
+        }
+    } else if (self.cycleViewTop.currentSelectedPage == 1 && self.cycleViewBottom.currentSelectedPage == 0) {
+        //USD -> EUR
+        if (currencyValue < [self.countUSD floatValue]) {
+            self.countUSD = [[NSDecimalNumber alloc] initWithFloat:(self.countUSD.floatValue - currencyValue)];
+            self.countEUR = [[NSDecimalNumber alloc] initWithFloat:(self.countEUR.floatValue + [self.cycleViewBottom.currentView.valueTextField.text floatValue])];
+        } else {
+            [self priv_showAlertView:@"Insufficient funds in the USD"];
+        }
+    } else if (self.cycleViewTop.currentSelectedPage == 2 && self.cycleViewBottom.currentSelectedPage == 0) {
+        //GPB -> EUR
+        if (currencyValue < [self.countGPB floatValue]) {
+            self.countGPB = [[NSDecimalNumber alloc] initWithFloat:(self.countGPB.floatValue - currencyValue)];
+            self.countEUR = [[NSDecimalNumber alloc] initWithFloat:(self.countEUR.floatValue + [self.cycleViewBottom.currentView.valueTextField.text floatValue])];
+        } else {
+            [self priv_showAlertView:@"Insufficient funds in the GPB"];
+        }
+    }
+    [self priv_refreshInterfaceWithData];
+}
+
+- (void)priv_showAlertView:(NSString *)message {
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Attention:" message:message preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertAction* defaultAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault
+                                                          handler:^(UIAlertAction * action) {
+                                                              [alert dismissViewControllerAnimated:YES completion:nil];
+                                                          }];
+    [alert addAction:defaultAction];
+    [self presentViewController:alert animated:YES completion:nil];
+}
+
 #pragma mark - CycleScrollViewDataSource
 
 - (NSMutableArray *)currensiesStats:(CycleScrollView *)bannerView {
@@ -79,9 +129,9 @@
 
 - (NSArray *)numberOfCurrencyView:(CycleScrollView *)bannerView {
     
-    return @[self.countGPB,
-             self.countEUR,
-             self.countUSD];
+    return @[self.countEUR,
+             self.countUSD,
+             self.countGPB];
 }
 
 #pragma mark - CycleScrollViewDelegate

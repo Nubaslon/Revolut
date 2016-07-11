@@ -43,6 +43,12 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="120" id="Xts-xt-7Vg"/>
                                 </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="7"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="layer.maskToBounds" value="YES"/>
+                                </userDefinedRuntimeAttributes>
                                 <connections>
                                     <outlet property="datasource" destination="BYZ-38-t0r" id="0b0-f2-4SM"/>
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="JNd-ip-jOm"/>
@@ -54,6 +60,12 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="120" id="KCn-jK-ERS"/>
                                 </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="7"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="layer.maskToBounds" value="YES"/>
+                                </userDefinedRuntimeAttributes>
                                 <connections>
                                     <outlet property="datasource" destination="BYZ-38-t0r" id="Z4c-7u-DMO"/>
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="4qe-ZD-4K7"/>
@@ -69,6 +81,12 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="layer.maskToBounds" value="YES"/>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="5"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                             </label>
                         </subviews>
                         <color key="backgroundColor" red="0.035294117647058823" green="0.27058823529411763" blue="0.71764705882352942" alpha="1" colorSpace="calibratedRGB"/>
@@ -91,6 +109,7 @@
                         <outlet property="currencyStatsLabel" destination="q46-Pg-IFC" id="3tX-sL-AC3"/>
                         <outlet property="cycleViewBottom" destination="u9P-SE-ArW" id="IHe-Xa-JDW"/>
                         <outlet property="cycleViewTop" destination="9yI-tE-Ogx" id="Y8X-Ra-MMr"/>
+                        <outlet property="exchangeButton" destination="bTc-C7-m1c" id="Ty9-IM-e6k"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
